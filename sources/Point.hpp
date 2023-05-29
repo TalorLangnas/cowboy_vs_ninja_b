@@ -1,43 +1,30 @@
 #ifndef POINT_HPP
 #define POINT_HPP
-#include <sstream>
-#include <stdexcept>
-#include <iostream>
-#include <fstream>
-#include <algorithm>
-#include <cmath>
-#include <climits>
+#include <string>
+
+
 using namespace std;
 
-namespace ariel
-{
-class Point
-{
+namespace ariel{
+
+    class Point
+    {
     private:
-    
-    double x;
-    double y;
+        double x;
+        double y;
 
     public:
-// Constructors:
-    Point(double, double);
-    // Copy Constructor:
-    Point(const Point&);
-    ~Point() = default;
-    // move constructor
-    Point(Point &&) noexcept = default;
+        Point(double x_point, double y_point) : x(x_point), y(y_point) {};
+        double distance(Point pnt);
+        void print();
+        string toString();
+        double get_x() const { return x; }
+        double get_y() const { return y; }
+        void set_x(double x_point) { x = x_point; }
+        void set_y(double y_point) { y = y_point; }
+        static Point moveTowards(Point& pnt1, Point& pnt2, double distance);
+    };
 
-// Methods:
-    double distance(Point);
-    string print();
-    static Point moveTowards(Point, Point, double);
-// Operators:
-    bool operator==(const Point& other) const;
-    Point& operator=(const Point& other);
-    operator string() const;
-    // move assignment operator
-    Point& operator=(Point &&) noexcept = default;
+}
 
-};
-};
-# endif
+#endif

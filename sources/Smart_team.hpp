@@ -2,20 +2,15 @@
 #define SMART_TEAM_HPP
 # include "Team.hpp"
 using namespace std;
-using namespace ariel;
 
+namespace ariel{
 class SmartTeam: public Team
 {
     public:
     SmartTeam(Character*);
 
-    // inner class for iterator//
-
-    // class iterator
-    // {
-
-    // };
+    
 };
-
+};
 
 # endif

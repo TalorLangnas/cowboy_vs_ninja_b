@@ -1,43 +1,35 @@
 #ifndef NINJA_HPP
 #define NINJA_HPP
 #include "Character.hpp"
+#include <string>
+
 using namespace std;
 
-class Ninja: public Character
+namespace ariel{
+class Ninja : public Character
 {
-    private:
+public:
     int speed;
 
-    public:
-
-// Constructors:
-    Ninja();
-    Ninja(double, double);
-    Ninja(Point);
-    Ninja(string, Point);
-    // Copy:
-    Ninja(const Ninja&);
+public:
+    // tidy:
     ~Ninja() override = default;
-    // move constructor
-    Ninja(Ninja &&) noexcept = default;
-    Ninja& operator=(Ninja &&) noexcept = default;
+    Ninja(const Ninja &) = default;            // Copy constructor
+    Ninja &operator=(const Ninja &) = default; // Copy assignment operator
+    Ninja(Ninja &&) = default;                 // Move constructor
+    Ninja &operator=(Ninja &&) = default;      // Move assignment operator
 
-// Class Methods:    
-    void slash(Character*);
-    virtual void move(Character*);
-    virtual int& get_speed();
-    string to_string() override;
-    void attack(Character* other) override;
-    bool is_cowboy() override;
+    // Constructor:
+    Ninja(string name, Point location) : Character(std::move(name), location), speed(0){};
 
-// Operators:
-    Ninja& operator=(Ninja);
-
-    friend std::ostream& operator<< (std::ostream& output, Ninja& ninja)
-    {
-        output << ninja.Ninja::to_string();
-        return output;
-    };
+    // Methods:
+    void move(Character *other);
+    void attack(Character *other) override { slash(other); }
+    void slash(Character *other);
+    int getAgility() const { return speed; }
+    string get_type() override { return "Ninja"; }
+    string print() override;
+};
 };
 
 #endif

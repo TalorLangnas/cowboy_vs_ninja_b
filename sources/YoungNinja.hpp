@@ -2,12 +2,12 @@
 #define YOUNG_NINJA_HPP
 #include "Ninja.hpp"
 using namespace std;
-using namespace ariel;
 
+namespace ariel{
 class YoungNinja:public Ninja
 {
     public:
-    YoungNinja();
-    YoungNinja(string, Point);
+    YoungNinja(string name, Point location);
+};
 };
 #endif

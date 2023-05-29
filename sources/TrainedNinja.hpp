@@ -2,13 +2,12 @@
 #define TRAINED_NINJA_HPP
 #include "Ninja.hpp"
 using namespace std;
-using namespace ariel;
 
+namespace ariel{
 class TrainedNinja: public Ninja
 {
     public:
-    TrainedNinja();
-    TrainedNinja(string, Point);
+    TrainedNinja(string name, Point location);
 }; 
-
+};
 #endif
